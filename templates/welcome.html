@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/welcome.css' %}"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="main_div text-center">
+        <h1 class="heading_text">
+            WELCOME TO THE HINDI QUESTION ANSWERING SYSTEM
+        </h1>
+
+        <form action="index">
+            <input type="submit" class="custom_button" value="Click Here To Continue">
+        </form>
+    </div>
+
+
+    <style>
+        body {
+            background: linear-gradient(-45deg, #8846be, #a88beb, #23a6d5, #fc59bd, #ca17f7);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .main_div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 1500px;
+
+        }
+
+        .heading_text {
+            font-family: 'Lato', sans-serif;
+            color: white;
+            font-weight: 900;
+            font-size: 8rem;
+            line-height: 100px;
+            word-spacing: 12px;
+        }
+
+        .custom_button {
+            padding: 10px 15px 10px 15px;
+            border-radius: 9px;
+            font-size: 20px;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            border: none;
+            color: #8846be;
+            margin-top: 5rem;
+            transition: .5s;
+        }
+
+        .custom_button:hover {
+            background-color: #8846be;
+            color: white;
+            transition: .5s;
+            transform: scale(1.2);
+        }
+
+        @media screen and (max-width:1499px) {
+            .main_div {
+                width: 100%;
+            }
+
+            .custom_button {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width:1000px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 6rem;
+                line-height: 100px;
+            }
+
+            .main_div {
+                width: 100%;
+                padding: 0px 15px 0px 15px;
+
+            }
+        }
+        @media screen and (max-width:644px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 5rem;
+                line-height: 100px;
+            }
+            .custom_button {
+                font-size: 25px;
+            }
+        }
+        @media screen and (max-width:540px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 4.8rem;
+                line-height: 100px;
+                word-spacing: 5px;
+            }
+            .custom_button {
+                font-size: 25px;
+            }
+        }
+        @media screen and (max-width:513px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 4.3rem;
+                line-height: 100px;
+                word-spacing: 5px;
+            }
+            .custom_button {
+                font-size: 23px;
+            }
+        }
+        @media screen and (max-width:465px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 5.5rem;
+                line-height: 89px;
+                word-spacing: 5px;
+            }
+            .custom_button {
+                font-size: 23px;
+            }
+        }
+        @media screen and (max-width:410px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 5.2rem;
+                line-height: 89px;
+                word-spacing: 5px;
+            }
+            .custom_button {
+                font-size: 21px;
+            }
+        }
+        @media screen and (max-width:385px) {
+            .heading_text {
+                font-family: 'Lato', sans-serif;
+                color: white;
+                font-weight: 900;
+                font-size: 4.6rem;
+                line-height: 85px;
+                word-spacing: 5px;
+            }
+            .custom_button {
+                font-size: 21px;
+            }
+        }
+    </style>
+</body>
+
+</html>

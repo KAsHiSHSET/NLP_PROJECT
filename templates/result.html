@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main_div container">
+        <div class="text-center">
+            <p class="heading_text">Our Model Predicted</p>
+        </div>
+        <div class="flex-div container">
+            <div>
+                <p class="result_text">Q. </p>
+            </div>
+            <div>
+                <p class="result_text"> {{question}}</p>
+            </div>
+        </div>
+        <div   class="flex-div container">
+            <div>
+                <p class="result_text">A. </p>
+            </div>
+            <div>
+                <p class="result_text"> {{result}}</p>
+            </div>
+        </div>
+        <form action="/index" class="text-center"> 
+            <input type="submit" class="custom_button" value="Click Here to Try Again">
+        </form>
+    </div>
+    <style>
+        .main_div{
+            background-image: url("{% static 'purple_back3.jpg' %}");
+            /* background-color: #f8ceec;
+            background-image: linear-gradient(315deg, #f1a7f1 0%, #a88beb 84%); */
+            min-height: 100vh;
+            width: 100%;
+            background-repeat: no-repeat;
+            padding-bottom: 4rem;
+        }
+        @media screen and (min-width:2000px) {
+            .main_div {
+                width: 2000px;
+                left: 50%;
+                
+                position: absolute;
+                transform: translate(-50%);
+            }
+
+        }
+        .flex-div{
+            display: flex;
+        }
+        .heading_text{
+            margin: 6rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 5rem;
+            font-weight: bolder;
+            color: white;
+            
+        }
+        .result_text{
+            word-spacing: 6px;
+            margin-top: 4rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 4rem;
+            font-weight: bolder;
+            color: white;
+            margin-left: 1rem;
+        }
+        .custom_button{
+            padding: 10px 15px 10px 15px;
+            border-radius: 9px;
+            font-size: 20px;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            border: none;
+            color: #be46a4;
+            margin-top: 4rem;
+            transition: .5s;
+        }
+        .custom_button:hover{
+            background-color: #be46a4;
+            color: white;
+            transition: .5s;
+            transform: scale(1.2);
+            
+        }
+        @media screen and (max-width:550px) {
+            .heading_text{
+            margin: 5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 4.5rem;
+            font-weight: bolder;
+            color: white;
+            
+        }
+        .result_text{
+            word-spacing: 6px;
+            margin-top: 4rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 3rem;
+            font-weight: bolder;
+            color: white;
+        }
+        }
+        @media screen and (max-width:410px) {
+            .heading_text{
+            margin: 5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 4.5rem;
+            font-weight: bolder;
+            color: white;
+            
+        }
+        .result_text{
+            word-spacing: 6px;
+            margin-top: 3.5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 3rem;
+            font-weight: bolder;
+            color: white;
+        }
+        }
+        @media screen and (max-width:365px) {
+            .heading_text{
+            margin: 5rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 4rem;
+            font-weight: bolder;
+            color: white;
+            
+        }
+        .result_text{
+            word-spacing: 6px;
+            margin-top: 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 3rem;
+            font-weight: bolder;
+            color: white;
+        }
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="resp_div">
+        <div class="bg_div container ">
+            <div class="text-center">
+                <p class="heading_text">HINDI QUESTION ANSWERING SYSTEM</p>
+                <p class="system_desc">This system allows you to predict an answer for a question asked from a passage
+                    in regional Language(i.e Hindi).</p>
+            </div>
+            <div class="main_div">
+                <form action="result">
+                    <div class="form_div">
+                        <div>
+                            <p class="sub_div_text">ENTER THE PASSAGE</p>
+                            <textarea class="form-control textarea_passage" type="text" placeholder="Enter passage"
+                                autocomplete="on" required name="passage"></textarea>
+                        </div>
+                        <div>
+                            <p class="sub_div_text">ENTER THE QUESTION</p>
+
+                            <textarea class="form-control textarea_ques" type="text" placeholder="Enter question"
+                                autocomplete="on" required name="question"></textarea>
+                        </div>
+
+
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="custom_button" value="Predict">
+                    </div>
+
+
+
+
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        .bg_div {
+            background-image: url("{% static 'purple_back3.jpg' %}");
+            /* background-color: #f8ceec;
+            background-image: linear-gradient(315deg, #f1a7f1 0%, #a88beb 84%); */
+            min-height: 100vh;
+            width: 100%;
+            background-repeat: no-repeat;
+        }
+
+        @media screen and (min-width:2000px) {
+            .resp_div {
+                width: 2000px;
+                left: 50%;
+                
+                position: absolute;
+                transform: translate(-50%);
+            }
+
+        }
+
+        .system_desc {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+
+        .heading_text {
+            margin-top: 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 5.9rem;
+            font-weight: bolder;
+            color: white;
+        }
+
+        .main_div {
+            margin: 10rem;
+        }
+
+        .sub_div_text {
+            font-family: 'Lato', sans-serif;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .form_div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+
+        }
+
+        .form-control {
+            font-size: 1.75rem;
+            color: black;
+        }
+
+        .textarea_passage {
+            background-color: rgb(242, 216, 253);
+            color: black;
+            min-width: 400px;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            min-height: 200px;
+
+        }
+
+        .textarea_ques {
+            background-color: rgb(242, 216, 253);
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            min-height: 100px;
+        }
+
+        .custom_button {
+            padding: 10px 25px 10px 25px;
+            border-radius: 9px;
+            font-size: 22px;
+            font-family: 'Lato', sans-serif;
+            font-weight: bolder;
+            border: none;
+            color: #be46a4;
+            margin-top: 2rem;
+            transition: .5s;
+        }
+
+        .custom_button:hover {
+            background-color: #be46a4;
+            color: white;
+            transition: .5s;
+            transform: scale(1.2);
+
+        }
+        @media screen and (max-width:1100px) {
+            .heading_text {
+            margin-top: 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 5rem;
+            font-weight: bolder;
+            color: white;
+        }
+        .system_desc {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+        .sub_div_text {
+            font-family: 'Lato', sans-serif;
+            font-size: 3.5rem;
+            color: white;
+            font-weight: bold;
+        }
+        .custom_button {
+            padding: 10px 25px 10px 25px;
+            border-radius: 9px;
+            font-size: 18px;
+            font-family: 'Lato', sans-serif;
+            font-weight: bolder;
+            border: none;
+            color: #be46a4;
+            margin-top: 2rem;
+            transition: .5s;
+        }
+        }
+        @media screen and (max-width:1000px) {
+            .heading_text {
+            margin-top: 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 4rem;
+            font-weight: bolder;
+            color: white;
+        }
+        .system_desc {
+            color: white;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+            .sub_div_text {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+        }
+        @media screen and (max-width:925px) {
+            .form_div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+
+        }
+        .sub_div_text {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+            margin-top: 1.5rem;
+        }
+        .textarea_ques {
+            background-color: rgb(242, 216, 253);
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            max-height: 40px;
+        }
+        }
+        @media screen and (max-width:645px) {
+            .textarea_passage {
+            background-color: rgb(242, 216, 253);
+            color: black;
+            min-width: auto;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            min-height: 200px;
+
+        }
+            .textarea_ques {
+            background-color: rgb(242, 216, 253);
+            color: black;
+            font-family: 'Lato', sans-serif;
+            font-size: 2rem;
+            max-height: 40px;
+            
+        }
+        }
+        @media screen and (max-width:600px) {
+            .main_div {
+            margin: 6rem;
+        }
+        }
+        @media screen and (max-width:470px) {
+            .main_div {
+            margin: 3rem;
+        }
+        .heading_text {
+            margin-top: 3rem;
+            font-family: 'Lato', sans-serif;
+            font-size: 3.3rem;
+            font-weight: bolder;
+            color: white;
+        }
+        }
+    </style>
+</body>
+
+</html>
