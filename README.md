@@ -1,89 +1,54 @@
-Hindi Question Answering System
-Question Answering (QA) is a type of information extraction system that provides specific answers to the questions being asked, unlike traditional information retrieval systems that return entire documents or web pages.
+Hindi-Question-Answering-System
+Question Answering(QA) is a type of information extraction system which provides specific answers for the questions being asked. When we search for information on the Internet, we employ information retrieval systems which provide the entire web page as a response. However, as they show you documents, you must read them and decide whether they include the information you desire. A question answering system will make it possible to find the information effectively. These systems are already implemented in a variety of languages, but not very much in Indian languages. The proposed system is a Question Answer System (QA) for Hindi material that would be useful to persons who learn Hindi as their first language. The Hindi text is evaluated to determine the semantics of each line, and the appropriate answer for the given question is retrieved from the document using span texts; the model was able to accurately extract answers from passages.
 
-While QA systems are widely implemented in foreign languages, their availability in Indian languages like Hindi is still limited. This project presents a Hindi QA system designed to help native Hindi speakers find precise answers from a given document.
+Steps involves in buiding the system
+Pre-Processing
+In the preprocessing of passages, they are broken down into smaller units (individual terms or a set of words), which are called tokens. This is significant because the text's meaning may be easily deduced by examining the words in the text. The answers are processed by marking all the character indexes in the passage that are also in the answer then finding all the tokens that are in the answers and finally storing start and end token indexes. These start and end tokens will help the model understand the connection between a question and its answer.
 
-💡 Key Features
-Designed for Hindi language
+Span Texts
+After the preprocessing of passages is done, span texts are generated using the preprocessed passages. Span texts are used to understand the semantic meaning of the sentence. The whole passage after tokenization is divided into span texts of 128 words, out of which only one set will have the correct answer, this way the model will understand where to look for the answer in the passage.
 
-Uses BERT for question answering
+hindi text(around 200 words) = “कुछ नॉर्मनर्म सदुरू पर्वीू र्वी अनातोलि या मेंअर्मेनि याई के …… जबकि अमाल्फ़ि और बारी इटली मेंनॉर्मनर्म शासन के अधीन थे।”
 
-Processes questions and answers using span texts
+span texts[question, span_context, span_answer_start, answer_text, span_answer_exist]: This is the format in which the span texts are stored.
 
-Trained on XQuAD dataset
+Question: It is the question being asked.
 
-UI interface for end-user interaction
+span_context: It contains the actual span text consisting of 128 words or tokens.
 
-🔧 Steps Involved in Building the System
-1. Preprocessing
-Passages:
-Tokenize passages into individual words (tokens).
+span_answer_start: It indicates the starting position of answer in the span text.
 
-Mark all character indexes in the passage that match the answer.
+answer_text: It is the answer for the question being asked.
 
-Store start and end token indexes of the answer to help the model learn.
+span_answer_exist: It indicates whether the answer exists in the span text or not.
 
-Questions:
-Questions are also tokenized to understand their semantic meaning and help locate relevant answers.
+Examples:
 
-2. Span Text Generation
-Entire tokenized passage is broken into span texts of 128 words.
+['अनटोलि या मेंनॉर्मन्र्म स कि सकी टीम मेंशामि ल थे?', "कुछ नॉर्मनर्म सदुरू पर्वीू र्वी अनातोलि या मेंअर्मेनि याई ……बीच का ज्ञात व्यापार उन शहरों मेंइटालो-नॉर्मन्र्म स की", 114, 'तर्कीु र्की सेना', 1],
 
-Only one of these spans contains the correct answer.
+['अनटोलि या मेंनॉर्मन्र्म स कि सकी टीम मेंशामि ल थे?', "से1074 के मध्य अर्मेनि याई जनरल …….. बारी इटली मेंनॉर्मनर्म शासन के अधीन थे।", 0, 'तर्कीु र्की सेना', 0]
 
-Format of each span:
+As a result of making span texts, the model will understand where to look for the answers in the passage. It can capture the semantic meaning of texts surrounding the answer in a shorter sentence as compared to a larger sentence.
 
-python
-Copy
-Edit
-[question, span_context, span_answer_start, answer_text, span_answer_exist]
-📌 Example:
-text
-Copy
-Edit
-["अनटोलि या मेंनॉर्मन्र्म स कि सकी टीम मेंशामि ल थे?", 
- "से1074 के मध्य अर्मेनि याई जनरल …….. बारी इटली मेंनॉर्मनर्म शासन के अधीन थे।", 
- 0, "तर्कीु र्की सेना", 0]
-This helps the model learn where to look for answers in a large passage.
+Pre-Processing of questions: The preprocessing of questions is
+done in a similar way as is done for the passages. Questions are also tokenized to capture their semantic meaning, this will help the model to understand the meaning of the question being asked and where to find the answer in the passage.
 
-3. Model Architecture (BERT)
-Uses a pre-trained BERT model, modified for QA.
+Model:
+The BERT model is used to train the data because it can look at the words that follow before and after a word to get its whole context, which is particularly valuable for determining the intent behind the question asked. The traditional use of BERT for QA involves packing both questions and the reference text and giving it as an input to the model; the 2 pieces are separated by a [sep] token. Start and end token classifier is used to predict the tokens in the answer. This approach has been applied to English language and a few other foreign languages.
 
-Input = [question] + [SEP] + [passage span]
+The proposed work works in a similar way with the addition of span texts as an input to the model. Input IDs, token type IDs, and attention masks are the model's inputs. Input IDs are self-explanatory: they're just mappings between tokens and their corresponding IDs. The model's attention mask prevents it from looking at padding tokens. Token type IDs are often used in next word prediction tasks, in which two sentences are provided; in the proposed work, it is used for predicting tokens in the answer. The output of the model is the probability of the starting and the ending token of the answer which is present in the passage. The probability is produced by applying the softmax function to the dot product of start token weights and word embeddings.
 
-Inputs to the model:
+Answer Prediction:
+Once the model has predicted the start and end tokens for the answer, it will use these tokens to map the corresponding text in the passage and hence the answer will be detected.
 
-input_ids
+Implementation
+The model is trained on the xquad dataset which contains around 240 unique passages and around 1200 unique questions covering different segments of literature like sports, culture politics, history, etc, in the hindi language. The model makes use of pre-trained text embeddings along with the embeddings from passages, questions and answers. The dataset contains around 1200 questions and the whole dataset was split into 80:20 ratio as training and testing set .The loss function used is Sparse categorical cross entropy because it saves time and memory as well as computation, as it simply uses a single integer for a class. The model is trained on a GPU for 20 epochs minimizing the loss value and improving the accuracy of the model. Adam optimizer is used as it is good at handling noisy and sparse gradients.
 
-attention_mask
+Results of model on training and testing set
+![image](https://github.com/user-attachments/assets/a217f8a6-ab47-4e21-aea5-b2cb6cad6ca4)
 
-token_type_ids
+UI Design
+![image](https://github.com/user-attachments/assets/fa2d3280-0887-49f1-a183-5a4b0b7712c4)
 
-Model predicts the start and end token of the answer span.
+![image](https://github.com/user-attachments/assets/80e063f6-db2c-42ed-9e4c-2a4de7c1eeb0)
 
-Output is generated by applying softmax over token embeddings.
-
-4. Answer Prediction
-The model's predicted start and end tokens are used to extract the final answer from the span text.
-
-🧠 Dataset Used
-Dataset: XQuAD (Hindi)
-
-Passages: ~240
-
-Questions: ~1200
-
-Split: 80% training, 20% testing
-
-Domains: Sports, Politics, Culture, History, etc.
-
-⚙️ Model Training
-Loss Function: Sparse Categorical Cross-Entropy
-
-Optimizer: Adam
-
-Epochs: 20
-
-Hardware: GPU
-
-Embeddings: Combination of pre-trained and passage/question embedding
