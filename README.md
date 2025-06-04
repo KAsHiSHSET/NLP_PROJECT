@@ -1,12 +1,18 @@
-#Hindi-Question-Answering-System
+# **Hindi-Question-Answering-System**
 
 Question Answering(QA) is a type of information extraction system which provides specific answers for the questions being asked. When we search for information on the Internet, we employ information retrieval systems which provide the entire web page as a response. However, as they show you documents, you must read them and decide whether they include the information you desire. A question answering system will make it possible to find the information effectively. These systems are already implemented in a variety of languages, but not very much in Indian languages. The proposed system is a Question Answer System (QA) for Hindi material that would be useful to persons who learn Hindi as their first language. The Hindi text is evaluated to determine the semantics of each line, and the appropriate answer for the given question is retrieved from the document using span texts; the model was able to accurately extract answers from passages.
 
 #Steps involves in buiding the system
-#Pre-Processing
+
+
+#Pre-Processing  
+
+
 In the preprocessing of passages, they are broken down into smaller units (individual terms or a set of words), which are called tokens. This is significant because the text's meaning may be easily deduced by examining the words in the text. The answers are processed by marking all the character indexes in the passage that are also in the answer then finding all the tokens that are in the answers and finally storing start and end token indexes. These start and end tokens will help the model understand the connection between a question and its answer.
 
-#Span Texts
+#Span Texts  
+
+
 After the preprocessing of passages is done, span texts are generated using the preprocessed passages. Span texts are used to understand the semantic meaning of the sentence. The whole passage after tokenization is divided into span texts of 128 words, out of which only one set will have the correct answer, this way the model will understand where to look for the answer in the passage.
 
 hindi text(around 200 words) = “कुछ नॉर्मनर्म सदुरू पर्वीू र्वी अनातोलि या मेंअर्मेनि याई के …… जबकि अमाल्फ़ि और बारी इटली मेंनॉर्मनर्म शासन के अधीन थे।”
@@ -23,7 +29,9 @@ answer_text: It is the answer for the question being asked.
 
 span_answer_exist: It indicates whether the answer exists in the span text or not.
 
-#Examples:
+#Examples: 
+
+
 
 ['अनटोलि या मेंनॉर्मन्र्म स कि सकी टीम मेंशामि ल थे?', "कुछ नॉर्मनर्म सदुरू पर्वीू र्वी अनातोलि या मेंअर्मेनि याई ……बीच का ज्ञात व्यापार उन शहरों मेंइटालो-नॉर्मन्र्म स की", 114, 'तर्कीु र्की सेना', 1],
 
