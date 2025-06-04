@@ -45,9 +45,12 @@ Implementation
 The model is trained on the xquad dataset which contains around 240 unique passages and around 1200 unique questions covering different segments of literature like sports, culture politics, history, etc, in the hindi language. The model makes use of pre-trained text embeddings along with the embeddings from passages, questions and answers. The dataset contains around 1200 questions and the whole dataset was split into 80:20 ratio as training and testing set .The loss function used is Sparse categorical cross entropy because it saves time and memory as well as computation, as it simply uses a single integer for a class. The model is trained on a GPU for 20 epochs minimizing the loss value and improving the accuracy of the model. Adam optimizer is used as it is good at handling noisy and sparse gradients.
 
 Results of model on training and testing set
+
 ![image](https://github.com/user-attachments/assets/a217f8a6-ab47-4e21-aea5-b2cb6cad6ca4)
 
 UI Design
+
+
 ![image](https://github.com/user-attachments/assets/fa2d3280-0887-49f1-a183-5a4b0b7712c4)
 
 ![image](https://github.com/user-attachments/assets/80e063f6-db2c-42ed-9e4c-2a4de7c1eeb0)
